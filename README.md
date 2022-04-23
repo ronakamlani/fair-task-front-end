@@ -1,4 +1,15 @@
+## Description
+
+This is the front-end part of the of [Next app](https://github.com/ronakamlani/fairTaskBackend).
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Configuration
+
+First, create `.env` file at root folder and follow env.example for the parameters setup.
+
+Also, please make a sure **[Backend](https://github.com/ronakamlani/fairTaskBackend)** server is up and running.
+
 
 ## Getting Started
 
