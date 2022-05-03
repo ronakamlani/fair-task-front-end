@@ -17,18 +17,15 @@ const CollectionList = ({collections,onReminderClicked,onEditClicked}:ColletionL
     }
 
     return(
-        <div className="flex flex-wrap mb-4">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {collections.map((collection:CollectionInterface)=>{
                 return(
-                    <div className="md:w-1/3 w-full mb-4 px-2"
-                    key={"collection"+collection.id}
-                    >
                     <CollectionGrid
+                        key={"collection"+collection.id}
                         collection={collection}
                         onReminderClicked={onReminderClicked}
                         onEditClicked={onEditClicked}
                     />
-                    </div>
                 )
             })}
             

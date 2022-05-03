@@ -4,7 +4,7 @@ import MyImage from "./MyImage";
 
 const MyImageList= ({images}:ImageListIProps)=>{
     return(
-        <div className="flex h-screen">
+        <div className="container flex h-full m-auto lg:mx-5 lg:my-auto">
             <div className="m-auto flex-row flex flex-wrap">
                 {images.map( (image:MyImageInterface,i)=>{
                     return (<MyImage

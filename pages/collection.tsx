@@ -1,11 +1,11 @@
 
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import CollectionEditMeModal from "../src/components/collection/CollectionEditModal";
 
 import CollectionList from "../src/components/collection/CollectionList";
 import ReminderMeModal from "../src/components/collection/RemindMeModal";
-import Loading from "../src/components/common/Loading";
 import DefaultTheme from "../src/components/theme/DefaultTheme";
 import { CollectionInterface } from "../src/interface/collection.interfact";
 import { CollectionEditFormInterface } from "../src/interface/forms/CollectionEditForm.interface";
@@ -54,7 +54,10 @@ const Collection = ({collectionReducer,getAll,createEventSubmit,eventRegistratio
 
     return(
         <DefaultTheme>
-            <h2 className="mt-10 mb-10 text-lg text-yellow-900 font-bold	">Reminde me </h2>
+            <Head>
+                <title>Remind me - Task 1</title>
+            </Head>
+            <h2 className="mt-10 mb-10 text-lg text-yellow-900 font-bold	">Remind me </h2>
             <CollectionList 
                 collections={collectionReducer.collections}
                 onReminderClicked={onReminderClicked}

@@ -1,4 +1,5 @@
 
 export interface MyImageInterface{
-    src:string,
+    src:string;
+    marginRight:number;
 }

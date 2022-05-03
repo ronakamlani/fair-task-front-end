@@ -25,10 +25,16 @@ const formatAMPM = (date:Date)=> {
 
 export const  getRedableDate = (date:string) =>{
     let d = new Date(date);
-    return `${d.getDay()}${nth( d.getDay() )} ${d.toLocaleString('default', { month: 'short' })} ${d.getFullYear().toString().substring(2)} ${formatAMPM(d)} `;
+    return `${d.getDay()+1}${nth( d.getDay()+1 )} ${d.toLocaleString('default', { month: 'short' })}, ${d.getFullYear().toString().substring(2)} ${formatAMPM(d)} `;
 }
 
 export const isBeforeDates = (date2:Date) => {
-    console.log("isBefore",moment(new Date()).isBefore(moment(date2)));
+    //console.log("isBefore",moment(new Date()).isBefore(moment(date2)));
     return moment(new Date()).isBefore(moment(date2))
+};
+
+
+export const isBeforeXminsDates = (date2:Date,xMins:number) => {
+    //console.log("isBefore",moment(new Date()).add(xMins,"minutes").isBefore(moment(date2)));
+    return moment(new Date()).add(xMins,"minutes").isBefore(moment(date2))
 };

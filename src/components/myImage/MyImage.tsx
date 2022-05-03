@@ -1,10 +1,19 @@
+import { useState } from "react";
 import { MyImageIProps } from "../../interface/common/MyImageIProps.interface";
 
 const MyImage = ({image}:MyImageIProps)=>{
+
+    const [isBlur,setBlur] = useState(false);
+
+    const onTapImage = ()=>{
+        setBlur(true)
+    }
+
     return (
-        <div className=" md:w-1/3 w-1/2 p-2">
-            <img src={image.src} className="blur-sm hover:blur-none transition-all duration-1500 myImage" />
-        </div>
+        <img src={image.src} className={"task2-img blur-sm transition-all duration-1500 myImage mb-10" + (isBlur?" blur-none":"")}
+            onClick={onTapImage}
+            style={{marginRight:image.marginRight}}
+        />
     );
 } 
 

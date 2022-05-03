@@ -19,15 +19,15 @@ const RemindMeModalForm = ({collection,doSubmit,loading}:RemindMeModalFormIProps
     };
 
     return(
-        <form className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8" onSubmit={handleSubmit(onLocalSubmit)}>
-        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-          <span className="font-extralight">Get reminder about</span> <span className="font-extrabold">
+        <form className="px-5 pb-2 space-y-4 lg:px-5 sm:pb-5 xl:pb-5" onSubmit={handleSubmit(onLocalSubmit)}>
+        <h3 className=" font-medium text-gray-900 text-base tracking-tight pt-6 leading-4 text-dark1">
+          <span className="font-extralight">Get reminder about</span> <span className="font-semibold">
             {collection.name}
           </span>
         </h3>
         <MyInput
           id="email"
-          labelText="Email"
+          labelText="Email*"
           type="email"
           defaultValue=""
           register={register("email", {
@@ -46,12 +46,15 @@ const RemindMeModalForm = ({collection,doSubmit,loading}:RemindMeModalFormIProps
           register={register("rememberMe", { required: "Please agree terms and conditions" })}
           errorMessage={errors.rememberMe}
         />
-        <MyButton 
-          type="submit"
-          name={"Confirm"}        
-          isLoading={loading}
-          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        />
+        <hr className="border-dark-gray2" />
+        <div className="flex-row-reverse	flex">
+          <MyButton 
+            type="submit"
+            name={"Login"}        
+            isLoading={loading}
+            className="text-dark1 border border-dark1 border-2 bg-gray1 hover:bg-dark-gray2 focus:ring-4 focus:outline-none focus:ring-dark-gray1 font-medium rounded-lg text-sm px-8 py-2 text-center"
+          />
+        </div>
       </form>
     )
 }

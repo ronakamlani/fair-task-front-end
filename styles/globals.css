@@ -17,12 +17,53 @@ a {
 
 @tailwind base;
 @tailwind components;
+
+
 @tailwind utilities;
+
+@layer base {
+
+
+  @font-face {
+    font-family: 'Neue Montreal';
+    src: url('/fonts/NeueMontreal-Regular/NeueMontreal-Regular.woff') format('woff'),
+        url('/fonts/NeueMontreal-Regular/NeueMontreal-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}
 
 .duration-1500{
   transition-duration: 1500ms;
 }
 
+.myImage{
+  @apply max-w-full max-h-full w-full;
+}
 .myImage:hover{
   cursor:url(/images/cursor.svg), auto;
+}
+
+.tracking-tight{
+  letter-spacing: -0.02em;
+}
+
+.react-datepicker-wrapper{
+  margin-top: 0.5rem !important;
+}
+
+.task2-img{
+  @apply p-5;
+}
+
+@screen lg {
+  .myImage{
+    max-width: 220px;
+    max-height: 180px;
+    width: 220px;
+  }
+  .task2-img{
+    @apply p-0;
+  }
 }

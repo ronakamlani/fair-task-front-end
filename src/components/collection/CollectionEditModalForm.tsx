@@ -6,9 +6,10 @@ import { MyInput } from "../common/MyInput";
 import MyButton from "../common/MyButton";
 import MyDateTimePicker from "../common/MyDateTimePicker";
 import { useEffect } from "react";
-import { isBeforeDates } from "../../utility/date";
+import { isBeforeXminsDates } from "../../utility/date";
 import { CollectionModalProps } from "../../interface/props/CollectionModalProps";
 import { CollectionEditFormInterface } from "../../interface/forms/CollectionEditForm.interface";
+import moment from "moment";
 
 
 const CollectionEditModalForm = ({collection,loading,doSubmit}:CollectionModalProps)=>{
@@ -17,7 +18,7 @@ const CollectionEditModalForm = ({collection,loading,doSubmit}:CollectionModalPr
 
     useEffect(() => {
       register("launchDate", {
-        validate: (date:Date) => { if(!date){ return true; } return isBeforeDates(date) }, 
+        validate: (date:Date) => { if(!date){ return true; } return isBeforeXminsDates(date,30) }, 
       });
     });
 
@@ -42,9 +43,12 @@ const CollectionEditModalForm = ({collection,loading,doSubmit}:CollectionModalPr
       doSubmit(formData);
     };
 
+    const today = moment().add(30,"minutes");
+    const startingDate = collection.launchDate?new Date(collection.launchDate) : today.toDate()
+
     return(
-        <form className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8" onSubmit={handleSubmit(onLocalSubmit)}>
-        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+        <form className="px-5 pb-2 space-y-4 lg:px-5 sm:pb-5 xl:pb-5" onSubmit={handleSubmit(onLocalSubmit)}>
+        <h3 className=" font-medium text-gray-900 text-base tracking-tight pt-6 leading-4 text-dark1">
           <span className="font-extralight">Edit : </span> <span className="font-extrabold">
             {collection.name}
           </span>
@@ -75,17 +79,19 @@ const CollectionEditModalForm = ({collection,loading,doSubmit}:CollectionModalPr
           name={"launchDate"}
           control={control}
           errorMessage={errors.launchDate?"Past date is not allows.":""}
-          startingDate={collection.launchDate?new Date(collection.launchDate) : new Date()} 
+          startingDate={startingDate} 
         />
         {errors.errorMessage?.message}
-        
-        <MyButton 
-          type="submit"
-          isLoading={loading}
-          buttonStyle="secondary"
-          name={"Save"}        
-          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        />
+        <hr className="border-dark-gray2" />
+        <div className="flex-row-reverse	flex">
+          <MyButton 
+            type="submit"
+            isLoading={loading}
+            buttonStyle="secondary"
+            name={"Save"}        
+            className="text-dark1 border border-dark1 border-2 bg-gray1 hover:bg-dark-gray2 focus:ring-4 focus:outline-none focus:ring-dark-gray1 font-medium rounded-lg text-sm px-8 py-2 text-center"
+          />
+        </div>
       </form>
     )
 }

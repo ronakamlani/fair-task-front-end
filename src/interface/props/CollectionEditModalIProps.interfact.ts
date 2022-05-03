@@ -3,7 +3,7 @@ import { CollectionEditFormInterface } from "../forms/CollectionEditForm.interfa
 
 export interface CollectionEditModalIProps{
     isOpen:boolean,
-    closeMe:React.MouseEventHandler<HTMLButtonElement>,
+    closeMe:React.MouseEventHandler<HTMLButtonElement|HTMLDivElement>,
     doSubmit:(data:CollectionEditFormInterface)=>void,
     loading?:boolean,
     collection:CollectionInterface|null
